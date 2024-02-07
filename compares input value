@@ -1,0 +1,35 @@
+dosseg
+.model small
+.stack 100h
+.data
+Msg1 db 'VALUE IS EQUAL$'
+Msg2 db 'VALUE IS NOT EQUAL$'
+.code
+main proc
+mov ax,@data
+mov ds,ax
+mov bl,'3'
+mov ah,1
+int 21h
+
+; for nextline
+mov dl,10
+mov ah,2
+int 21h
+
+cmp bl,al
+je L1
+mov dx,offset Msg2
+mov ah,9
+int 21h
+mov ah,4ch
+int 21h
+
+L1:
+mov dx,offset Msg1
+mov ah,9
+int 21h
+mov ah,4ch
+int 21h
+main endp
+end main
