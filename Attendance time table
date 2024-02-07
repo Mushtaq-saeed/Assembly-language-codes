@@ -1,0 +1,400 @@
+dosseg
+.model small
+.stack 100h
+.data
+date1 db '25/02/2024$'
+date2 db '26/02/2024$'
+day1 db 'THURSDAY$'
+day2 db 'FRIDAY$'
+string db "  $"
+cuid  db '2802$'
+student db 'Muzammil$'
+sno db 'ID$'
+nama db 'NAME$'
+date db 'DATE$'
+day db 'DAY$'
+att db 'ATTENDENCE$'
+subj1 db 'ASSEMBLY$'
+subj2 db 'DSA$'
+sb db 'SUBJECT$'
+pr db 'PRESENT$'
+ab db 'ABSENT$'
+t db 'TOTAL$'
+
+.code
+
+main proc
+
+call no
+call space
+call space
+call upname
+call space
+call space
+call space
+call dt0
+call space
+call space
+call space
+call space
+call dy0
+call space
+call space
+call space
+call space
+call space
+call subject
+call space
+call space
+call attendence
+
+call nextLine
+
+;nextline 
+
+call id
+call space
+call muz
+call space
+call d1
+call space
+call dayt
+call space
+call space
+mov dl,''
+mov ah,2
+int 21h
+call assembly
+call space
+call space 
+call absent
+call nextLine
+
+
+;nextline 
+
+call id
+call space
+call muz
+call space
+call d2
+call space
+call dayf
+call space
+call space
+call space
+call space
+call dsa
+call space
+call space
+call space
+call space
+call present
+; absent left
+
+call nextLine
+call nextLine
+
+call space 
+call space 
+call space
+call Total
+call space
+call space 
+call present
+call space
+mov dl,49
+mov ah,2 
+int 21h
+call nextLine
+call space 
+call space
+call space
+call space
+call space
+call space
+call space
+mov dl,''
+mov ah,2
+int 21h
+call absent
+call space
+mov dl,''
+mov ah,2
+int 21h
+mov dl,49
+mov ah,2 
+int 21h
+
+
+
+
+
+
+mov ah,4ch
+int 21h
+
+main endp
+
+d1 proc
+mov ax,@data
+mov ds,ax
+mov dx,offset date1
+mov ah,9
+int 21h
+ret
+d1 endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+
+d2 proc
+mov ax,@data
+mov ds,ax
+mov dx,offset date2
+mov ah,9
+int 21h
+ret
+d2 endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+nextLine proc
+  mov dx,10
+  mov ah,2
+  int 21h
+  mov dx,13
+  mov ah,2
+  int 21h
+  ret
+ nextLine endp 
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+dayt proc
+mov ax,@data
+mov ds,ax
+mov dx,offset day1
+mov ah,9
+int 21h
+ret
+dayt endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+dayf proc
+mov ax,@data
+mov ds,ax
+mov dx,offset day2
+mov ah,9
+int 21h
+ret
+dayf endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+space proc
+  mov ax,@data
+  mov ds,ax
+ mov dx, offset string
+ 
+ mov ah,9
+ int 21h
+ ret
+ space endp
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+id proc
+  mov ax,@data
+  mov ds,ax
+ mov dx, offset cuid
+ 
+ mov ah,9
+ int 21h
+ ret
+ id endp
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+muz proc
+  mov ax,@data
+  mov ds,ax
+ mov dx, offset student
+ 
+ mov ah,9
+ int 21h
+ ret
+ muz endp
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+no proc
+ mov ax,@data
+  mov ds,ax
+ mov dx, offset sno
+ 
+ mov ah,9
+ int 21h
+ ret
+ no endp
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+upname proc
+ mov ax,@data
+  mov ds,ax
+ mov dx, offset nama
+ 
+ mov ah,9
+ int 21h
+ ret
+ upname endp
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+dt0 proc
+ mov ax,@data
+  mov ds,ax
+ mov dx, offset date
+ 
+ mov ah,9
+ int 21h
+ ret
+ dt0 endp
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+dy0 proc
+ mov ax,@data
+  mov ds,ax
+ mov dx, offset day
+ 
+ mov ah,9
+ int 21h
+ ret
+ dy0 endp
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+attendence proc
+  mov ax,@data
+  mov ds,ax
+  mov dx,offset att
+  mov ah,9
+  int 21h
+  ret
+ attendence endp
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+assembly proc
+mov ax,@data
+mov ds,ax
+mov dx,offset subj1
+mov ah,9
+int 21h
+ ret
+ assembly endp 
+ mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+ 
+
+ dsa proc
+  mov ax,@data
+  mov ds,ax
+  mov dx,offset subj2
+  mov ah,9
+  int 21h
+ ret
+ dsa endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+
+Subject proc 
+mov ax,@data 
+mov ds,ax 
+mov dx,offset sb 
+mov ah,9 
+int 21h 
+ret 
+Subject endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+
+present proc
+  mov ax,@data
+  mov ds,ax
+  mov dx,offset pr
+  mov ah,9
+  int 21h
+  ret
+present endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+ absent proc 
+mov ax,@data 
+mov ds,ax 
+mov dx,offset ab 
+mov ah,9 
+int 21h 
+ret 
+absent endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+
+
+Total proc
+  mov ax,@data
+  mov ds,ax
+  mov dx,offset t
+  mov ah,9
+  int 21h
+  ret
+Total endp
+mov ah,2
+int 21h
+mov ah,4ch
+int 21h
+
+end main
